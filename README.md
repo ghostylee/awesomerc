@@ -1,0 +1,4 @@
+awesomerc
+=========
+
+awesome wm configuration
