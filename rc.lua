@@ -313,10 +313,10 @@ fshwidget = widget({ type = "textbox" })
 -- {{{ eth
 netupwidget = widget({ type = "textbox" })
   vicious.cache(vicious.widgets.net)
-  vicious.register(netupwidget, vicious.widgets.net, "" .. colblk .. "up " .. coldef .. colbblk .. "${eth0 up_kb} " .. coldef .. "")
+  vicious.register(netupwidget, vicious.widgets.net, "" .. colcya .. "up " .. coldef .. colbwhi .. "${eth0 up_kb} " .. coldef .. "")
 
 netdownwidget = widget({ type = "textbox" })
-  vicious.register(netdownwidget, vicious.widgets.net, "" .. colblk .. "down " ..coldef .. colbblk .. "${eth0 down_kb} " .. coldef .. "")
+  vicious.register(netdownwidget, vicious.widgets.net, "" .. colcya .. "down " ..coldef .. colbwhi .. "${eth0 down_kb} " .. coldef .. "")
 
 netwidget = widget({ type = "textbox" })
   vicious.register(netwidget, vicious.widgets.net,
@@ -356,21 +356,21 @@ wifiwidget = widget({ type = "textbox" })
       addr = string.match(addr, "%d+.%d+.%d+.%d+")
       return addr
     end
-    --if args["{link}"] == 1 then
-      --wifidownwidget.visible = false
-      --wifiupwidget.visible = false
-      --return ""
-    --else
-      --wifidownwidget.visible = true
-      --wifiupwidget.visible = true
-      --if args["{link}"]/70*100 <= 50 then
-        --return "" .. colcya .. "wlan " .. coldef .. colbwhi .. ip_addr() .. coldef .. colwhi .. " on " .. coldef .. colbwhi .. args["{ssid}"] .. coldef .. colred .. " at " .. coldef .. colbred .. string.format("[%i%%]", args["{link}"]/70*100) .. coldef .. " "
-      --elseif args["{link}"]/70*100 > 50 and args["{link}"]/70*100 <=75 then
-        --return "" .. colcya .. "wlan " .. coldef .. colbwhi .. ip_addr() .. coldef .. colwhi .. " on " .. coldef .. colbwhi .. args["{ssid}"] .. coldef .. colyel .. " at " .. coldef .. colbyel .. string.format("[%i%%]", args["{link}"]/70*100) .. coldef .. " "
-      --else
+    if args["{link}"] == 0 then
+      wifidownwidget.visible = false
+      wifiupwidget.visible = false
+      return ""
+    else
+      wifidownwidget.visible = true
+      wifiupwidget.visible = true
+      if args["{link}"]/70*100 <= 50 then
+        return "" .. colcya .. "wlan " .. coldef .. colbwhi .. ip_addr() .. coldef .. colwhi .. " on " .. coldef .. colbwhi .. args["{ssid}"] .. coldef .. colred .. " at " .. coldef .. colbred .. string.format("[%i%%]", args["{link}"]/70*100) .. coldef .. " "
+      elseif args["{link}"]/70*100 > 50 and args["{link}"]/70*100 <=75 then
+        return "" .. colcya .. "wlan " .. coldef .. colbwhi .. ip_addr() .. coldef .. colwhi .. " on " .. coldef .. colbwhi .. args["{ssid}"] .. coldef .. colyel .. " at " .. coldef .. colbyel .. string.format("[%i%%]", args["{link}"]/70*100) .. coldef .. " "
+      else
         return "" .. colcya .. "wlan " .. coldef .. colbwhi .. ip_addr() .. coldef .. colwhi .. " on " .. coldef .. colbwhi .. args["{ssid}"] .. coldef .. colwhi .. " at " .. coldef .. colbwhi .. string.format("[%i%%]", args["{link}"]/70*100) .. coldef .. " "
-      --end
-    --end
+      end
+    end
   end, 60, "wlan0" )
 -- }}}
 -- }}}
