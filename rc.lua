@@ -1,4 +1,4 @@
--- {{{ basic
+-- {{{ Basic
 -- Standard awesome library
 require("awful")
 require("awful.autofocus")
@@ -13,7 +13,6 @@ require("revelation")
 -- vicious widgets
 local vicious = require("vicious")
 
-require("colours")
 -- useful for debugging, marks the beginning of rc.lua exec
 print("Entered rc.lua: " .. os.time())
 
@@ -50,17 +49,56 @@ layouts =
 -- Define if we want to use titlebar on all applications.
 use_titlebar = false
 -- }}}
+-- {{{ Colours
+blk   = "#1a1a1a"
+red   = "#b23535"
+gre   = "#60801f"
+yel   = "#be6e00"
+blu   = "#1f6080"
+mag   = "#8f46b2"
+cya   = "#73afb4"
+whi   = "#b2b2b2"
+brblk = "#333333"
+brred = "#ff4b4b"
+brgre = "#9bcd32"
+bryel = "#d79b1e"
+brblu = "#329bcd"
+brmag = "#cd64ff"
+brcya = "#9bcdff"
+brwhi = "#d2d2d2"
+trblk = "#000000"
+trwhi = "#ffffff"
+
+-- Pango colour codes
+coldef  = "</span>"
+colblk  = "<span color='" .. blk .. "'>"
+colred  = "<span color='" .. red .. "'>"
+colgre  = "<span color='" .. gre .. "'>"
+colyel  = "<span color='" .. yel .. "'>"
+colblu  = "<span color='" .. blu .. "'>"
+colmag  = "<span color='" .. mag .. "'>"
+colcya  = "<span color='" .. cya .. "'>"
+colwhi  = "<span color='" .. whi .. "'>"
+colbblk = "<span color='" .. brblk .. "'>"
+colbred = "<span color='" .. brred .. "'>"
+colbgre = "<span color='" .. brgre .. "'>"
+colbyel = "<span color='" .. bryel .. "'>"
+colbblu = "<span color='" .. brblu .. "'>"
+colbmag = "<span color='" .. brmag .. "'>"
+colbcya = "<span color='" .. brcya .. "'>"
+colbwhi = "<span color='" .. brwhi .. "'>"
+-- }}}
 -- {{{ Shifty configured tags.
 shifty.config.tags = {
-    Term = {
-        layout    = awful.layout.suit.tile,
+    ["1-Term"] = {
+        layout    = awful.layout.suit.max,
         mwfact    = 0.55,
         exclusive = false,
         position  = 1,
         spawn     = terminal,
         slave     = true
     },
-    Web = {
+    ["2-Web"] = {
         layout      = awful.layout.suit.max,
         mwfact      = 0.65,
         exclusive   = true,
@@ -68,7 +106,7 @@ shifty.config.tags = {
         position    = 2,
         spawn       = browser,
     },
-    Vim = {
+    ["3-Vim"] = {
         layout    = awful.layout.suit.max,
         mwfact    = 0.60,
         exclusive = false,
@@ -77,13 +115,13 @@ shifty.config.tags = {
         screen    = 3,
         slave     = true,
     },
-    Media = {
-        layout    = awful.layout.suit.float,
+    ["4-Media"] = {
+        layout    = awful.layout.suit.max,
         exclusive = false,
         position  = 4,
     },
-    Office = {
-        layout   = awful.layout.suit.tile,
+    ["5-Office"] = {
+        layout   = awful.layout.suit.max,
         position = 5,
     },
 }
@@ -93,24 +131,24 @@ shifty.config.tags = {
 shifty.config.apps = {
     {
         match = {
+            "urxvt",
+            "xterm",
+        },
+        tag = "1-Term",
+    },
+    {
+        match = {
             "chromium",
             "firefox",
         },
-        tag = "Web",
+        tag = "2-Web",
     },
     {
         match = {
             "vim",
             "gvim",
         },
-        tag = "Vim",
-    },
-    {
-        match = {
-            "urxvt",
-            "xterm",
-        },
-        tag = "Term",
+        tag = "3-Vim",
     },
     {
         match = {
@@ -313,10 +351,10 @@ fshwidget = widget({ type = "textbox" })
 -- {{{ eth
 netupwidget = widget({ type = "textbox" })
   vicious.cache(vicious.widgets.net)
-  vicious.register(netupwidget, vicious.widgets.net, "" .. colcya .. "up " .. coldef .. colbwhi .. "${eth0 up_kb} " .. coldef .. "")
+  vicious.register(netupwidget, vicious.widgets.net, "" .. colred .. "▲ " .. coldef .. colbwhi .. "${eth0 up_kb} " .. coldef .. "")
 
 netdownwidget = widget({ type = "textbox" })
-  vicious.register(netdownwidget, vicious.widgets.net, "" .. colcya .. "down " ..coldef .. colbwhi .. "${eth0 down_kb} " .. coldef .. "")
+  vicious.register(netdownwidget, vicious.widgets.net, "" .. colgre .. "▼ " ..coldef .. colbwhi .. "${eth0 down_kb} " .. coldef .. "")
 
 netwidget = widget({ type = "textbox" })
   vicious.register(netwidget, vicious.widgets.net,
@@ -340,11 +378,11 @@ netwidget = widget({ type = "textbox" })
     end, 60, "eth0")
 -- }}}
 -- {{{ wlan
-wifidownwidget = widget({ type = "textbox" })
-  vicious.register(wifidownwidget, vicious.widgets.net, "" .. colcya .. "down " .. coldef .. colbwhi .. "${wlan0 down_kb} " .. coldef .. "")
-
 wifiupwidget = widget({ type = "textbox" })
-  vicious.register(wifiupwidget, vicious.widgets.net, "" .. colcya .. "up " .. coldef .. colbwhi .. "${wlan0 up_kb} " .. coldef .. "")
+  vicious.register(wifiupwidget, vicious.widgets.net, "" .. colred .. "▲ " .. coldef .. colbwhi .. "${wlan0 up_kb} " .. coldef .. "")
+
+wifidownwidget = widget({ type = "textbox" })
+  vicious.register(wifidownwidget, vicious.widgets.net, "" .. colgre .. "▼ " .. coldef .. colbwhi .. "${wlan0 down_kb} " .. coldef .. "")
 
 wifiwidget = widget({ type = "textbox" })
   vicious.register(wifiwidget, vicious.widgets.wifi,
@@ -467,9 +505,7 @@ for s = 1, screen.count() do
   -- Add widgets to the wibox - order matters
   my_top_wibox[s].widgets = {
     {
-      mylauncher,
       mytaglist[s],
-      mypromptbox[s],
       layout = awful.widget.layout.horizontal.leftright
     },
     mylayoutbox[s],
@@ -482,6 +518,8 @@ for s = 1, screen.count() do
   my_bottom_wibox[s] = awful.wibox({position = "bottom", screen = s})
   my_bottom_wibox[s].widgets = {
     {
+      mylauncher,
+      mypromptbox[s],
       layout = awful.widget.layout.horizontal.leftright
     },
     volwidget,separator,
