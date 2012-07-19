@@ -326,7 +326,7 @@ fsrwidget = widget({ type = "textbox" })
       return "" .. colred .. "/ " .. coldef .. colbred .. args["{/ used_p}"] .. "% (only " .. args["{/ avail_gb}"] .. " GiB avail) " .. coldef .. "" 
     else
       infoswitch = 0
-      return "" .. colblk .. "/ " .. coldef .. colbblk .. args["{/ used_p}"] .. "% (" .. args["{/ avail_gb}"] .. " GiB avail) " .. coldef .. ""
+      return "" .. colcya .. "/ " .. coldef .. colbwhi .. args["{/ used_p}"] .. "% (" .. args["{/ avail_gb}"] .. " GiB avail) " .. coldef .. ""
     end
   end, 621)
 ---- }}}
@@ -339,10 +339,10 @@ fshwidget = widget({ type = "textbox" })
     elseif args["{/home used_p}"] >= 98 and args["{/home used_p}"] < 99 then
       return "" .. colred .. "/home " .. coldef .. colbred .. args["{/home used_p}"] .. "% (" .. args["{/home avail_gb}"] .. " GiB free) " .. coldef .. ""
     elseif args["{/home used_p}"] >= 99 and args["{/home used_p}"] <= 100 then
---			naughty.notify({ title = "Hard drive Warning", text = "No space left on /home!\nMake some room.", timeout = 10, position = "top_right", fg = beautiful.fg_urgent, bg = beautiful.bg_urgent })
+			naughty.notify({ title = "Hard drive Warning", text = "No space left on /home!\nMake some room.", timeout = 10, position = "top_right", fg = beautiful.fg_urgent, bg = beautiful.bg_urgent })
       return "" .. colred .. "/home " .. coldef .. colbred .. args["{/home used_p}"] .. "% (" .. args["{/home avail_gb}"] .. " GiB free) " .. coldef .. "" 
     else
-      return "" .. colblk .. "/home " .. coldef .. colbblk .. args["{/home used_p}"] .. "% (" .. args["{/home avail_gb}"] .. " GiB free) " .. coldef .. ""
+      return "" .. colcya .. "/home " .. coldef .. colbwhi .. args["{/home used_p}"] .. "% (" .. args["{/home avail_gb}"] .. " GiB free) " .. coldef .. ""
     end
   end, 622)
 ---- }}}
@@ -522,19 +522,19 @@ for s = 1, screen.count() do
       mypromptbox[s],
       layout = awful.widget.layout.horizontal.leftright
     },
-    volwidget,separator,
-    --batwidget,separator,
-    memwidget,separator,
-    --tempwidget,separator,
-    cpuwidget,separator,
-    netupwidget,separator,
-    netdownwidget,separator,
-    netwidget,separator,
-    wifiupwidget,separator,
-    wifidownwidget,separator,
-    wifiwidget,separator,
-    fshwidget,separator,
-    fsrwidget,separator,
+    volwidget,
+    batwidget,
+    memwidget,
+    --tempwidget,
+    cpuwidget,
+    netupwidget,
+    netdownwidget,
+    netwidget,
+    wifiupwidget,
+    wifidownwidget,
+    wifiwidget,
+    --fshwidget,
+    fsrwidget,
     layout = awful.widget.layout.horizontal.rightleft
   }
   my_bottom_wibox[s].screen = s
