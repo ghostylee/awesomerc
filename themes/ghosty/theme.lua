@@ -13,8 +13,8 @@ theme = {}
 
 theme.font          = "DejaVu Sans Mono 8"
 
-theme.bg_normal     = black.."55"
-theme.bg_focus      = black
+theme.bg_normal     = black.."dd"
+theme.bg_focus      = dgrey
 theme.bg_urgent     = red
 theme.bg_minimize   = dgrey
 
