@@ -140,6 +140,7 @@ shifty.config.apps = {
         match = {
             "chromium",
             "firefox",
+            "Vimperator",
         },
         tag = "2-Web",
     },
