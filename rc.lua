@@ -375,7 +375,7 @@ netwidget = widget({ type = "textbox" })
         netupwidget.visible = true
         return "" .. colcya .. "eth0 " .. coldef .. colbwhi .. ip_addr() .. coldef .. " "
       end
-    end, 60, "eth0")
+    end, 5, "eth0")
 -- }}}
 -- {{{ wlan
 wifiupwidget = widget({ type = "textbox" })
@@ -409,7 +409,7 @@ wifiwidget = widget({ type = "textbox" })
         return "" .. colcya .. "wlan " .. coldef .. colbwhi .. ip_addr() .. coldef .. colwhi .. " on " .. coldef .. colbwhi .. args["{ssid}"] .. coldef .. colwhi .. " at " .. coldef .. colbwhi .. string.format("[%i%%]", args["{link}"]/70*100) .. coldef .. " "
       end
     end
-  end, 60, "wlan0" )
+  end, 5, "wlan0" )
 -- }}}
 -- }}}
 -- {{{ widget MPD
@@ -514,7 +514,7 @@ for s = 1, screen.count() do
     mytasklist[s],
     layout = awful.widget.layout.horizontal.rightleft
   }
-  my_top_wibox[s].screen = s
+  my_top_wibox[s].skreen = s
   my_bottom_wibox[s] = awful.wibox({position = "bottom", screen = s})
   my_bottom_wibox[s].widgets = {
     {
@@ -527,11 +527,11 @@ for s = 1, screen.count() do
     memwidget,
     --tempwidget,
     cpuwidget,
-    netupwidget,
-    netdownwidget,
+    --netupwidget,
+    --netdownwidget,
     netwidget,
-    wifiupwidget,
-    wifidownwidget,
+    --wifiupwidget,
+    --wifidownwidget,
     wifiwidget,
     --fshwidget,
     fsrwidget,
@@ -559,14 +559,14 @@ awful.button({}, 5, awful.tag.viewprev)
 -- Key bindings
 globalkeys = awful.util.table.join(
 -- Tags
-awful.key({modkey,}, "Left", awful.tag.viewprev),
-awful.key({modkey,}, "Right", awful.tag.viewnext),
+--awful.key({modkey,}, "Left", awful.tag.viewprev),
+--awful.key({modkey,}, "Right", awful.tag.viewnext),
 awful.key({modkey,}, "Escape", awful.tag.history.restore),
 
 awful.key({modkey,}, "h", awful.tag.viewprev),
 awful.key({modkey,}, "l", awful.tag.viewnext),
 
-awful.key({modkey,}, "e", revelation),
+awful.key({modkey,}, "p", revelation),
 -- Shifty: keybindings specific to shifty
 awful.key({modkey, "Shift"}, "d", shifty.del), -- delete a tag
 awful.key({modkey, "Shift"}, "n", shifty.send_prev), -- client to prev tag
@@ -581,7 +581,7 @@ function()
   awful.tag.viewonly(t)
 end),
 awful.key({modkey}, "a", shifty.add), -- creat a new tag
-awful.key({modkey,}, "r", shifty.rename), -- rename a tag
+awful.key({modkey,}, "e", shifty.rename), -- rename a tag
 awful.key({modkey, "Shift"}, "a", -- nopopup new tag
 function()
   shifty.add({nopopup = true})
@@ -620,8 +620,8 @@ awful.key({modkey,}, "Return", function() awful.util.spawn(terminal) end),
 awful.key({modkey, "Control"}, "r", awesome.restart),
 awful.key({modkey, "Shift"}, "q", awesome.quit),
 
-awful.key({modkey,"w"}, "l", function() awful.tag.incmwfact(0.05) end),
-awful.key({modkey,"w"}, "h", function() awful.tag.incmwfact(-0.05) end),
+awful.key({modkey,}, "Right", function() awful.tag.incmwfact(0.05) end),
+awful.key({modkey,}, "Left", function() awful.tag.incmwfact(-0.05) end),
 awful.key({modkey, "Shift"}, "h", function() awful.tag.incnmaster(1) end),
 awful.key({modkey, "Shift"}, "l", function() awful.tag.incnmaster(-1) end),
 awful.key({modkey, "Control"}, "h", function() awful.tag.incncol(1) end),
@@ -631,7 +631,7 @@ awful.key({modkey, "Shift"}, "space",
 function() awful.layout.inc(layouts, -1) end),
 
 -- Prompt
-awful.key({modkey}, "F1", function()
+awful.key({modkey}, "r", function()
   awful.prompt.run({prompt = "Run: "},
   mypromptbox[mouse.screen].widget,
   awful.util.spawn, awful.completion.shell,
