@@ -90,105 +90,49 @@ colbwhi = "<span color='" .. brwhi .. "'>"
 -- }}}
 -- {{{ Shifty configured tags.
 shifty.config.tags = {
-    ["1-Term"] = {
-        layout    = awful.layout.suit.max,
-        mwfact    = 0.55,
-        exclusive = false,
-        position  = 1,
-        spawn     = terminal,
-        slave     = true
-    },
-    ["2-Web"] = {
-        layout      = awful.layout.suit.max,
-        mwfact      = 0.65,
-        exclusive   = true,
-        max_clients = 1,
-        position    = 2,
-        spawn       = browser,
-    },
-    ["3-Vim"] = {
-        layout    = awful.layout.suit.max,
-        mwfact    = 0.60,
-        exclusive = false,
-        position  = 1,
-        init      = true,
-        screen    = 3,
-        slave     = true,
-    },
-    ["4-Media"] = {
-        layout    = awful.layout.suit.max,
-        exclusive = false,
-        position  = 4,
-    },
-    ["5-Office"] = {
-        layout   = awful.layout.suit.max,
-        position = 5,
-    },
+  ["1-Term"]   = { position = 1, layout = awful.layout.suit.max, init= true , spawn = terminal           } ,
+  ["2-File"]   = { position = 2, layout = awful.layout.suit.tile.top , spawn = terminal .. " -e ranger"  } ,
+  ["3-Vim"]    = { position = 3, layout = awful.layout.suit.max, spawn = terminal .. " -e vim"           } ,
+  ["4-Web"]    = { position = 4, layout = awful.layout.suit.max, spawn = browser                         } ,
+  ["5-Office"] = { position = 5, layout = awful.layout.suit.tile.bottom                                  } ,
+  ["6-Gimp"]   = { position = 6, layout = awful.layout.suit.floating, spawn = "gimp"                     } ,
+  ["7-Video"]  = { position = 7, layout = awful.layout.suit.floating                                     } ,
+  ["8-Music"]  = { position = 8, layout = awful.layout.suit.tile.bottom                                  } ,
+  ["9-Minicom"]= { position = 9, layout = awful.layout.suit.max , spawn = terminal .. " -e minicom"      } ,
+  ["torrent"]  = { layout = awful.layout.suit.max                                                        } ,
+  ["picture"]  = { layout = awful.layout.suit.max                                                        } ,
+  ["dial"]     = { layout = awful.layout.suit.max                                                        } ,
 }
 
 -- SHIFTY: application matching rules
 -- order here matters, early rules will be applied first
 shifty.config.apps = {
-    {
-        match = {
-            "urxvt",
-            "xterm",
-        },
-        tag = "1-Term",
-    },
-    {
-        match = {
-            "chromium",
-            "firefox",
-        },
-        tag = "2-Web",
-    },
-    {
-        match = {
-            "vim",
-            "gvim",
-        },
-        tag = "3-Vim",
-    },
-    {
-        match = {
-            "Mplayer.*",
-            "Mirage",
-            "gimp",
-            "gtkpod",
-            "Ufraw",
-            "easytag",
-        },
-        tag = "Media",
-        nopopup = true,
-    },
-    {
-        match = {
-            "MPlayer",
-            "Gnuplot",
-            "galculator",
-        },
-        float = true,
-    },
-    {
-        match = {
-            terminal,
-        },
-        honorsizehints = false,
-        slave = true,
-    },
-    {
-        match = {""},
-        buttons = awful.util.table.join(
-            awful.button({}, 1, function (c) client.focus = c; c:raise() end),
-            awful.button({modkey}, 1, function(c)
-                client.focus = c
-                c:raise()
-                awful.mouse.client.move(c)
-                end),
-            awful.button({modkey}, 3, awful.mouse.client.resize)
-            )
-    },
+  -- term
+  { match = { "urxvt", "xterm"       } , tag = "1-Term",                                               } ,
+  -- file
+  { match = { "ranger",              } , tag = "2-File",                                               } ,
+  -- vim
+  { match = { "vim", "gvim"          } , tag = "3-Vim",                                                } ,
+  -- minicom
+  { match = { "minicom",             } , tag = "9-Minicom",                                            } ,
+  -- web
+  { match = { "chromium", "Firefox"  } , tag = "4-Web",                                                } ,
+  --office
+  { match = { "Zathura"              } , tag = "5-Office",                                             } ,
+  -- gimp
+  { match = { "Gimp"                 } , tag = "6-Gimp",                                               } ,
+  { match = { "gimp%-image%-window"  } , geometry = {176,15,929,800},                border_width = 0  } ,
+  { match = { "^gimp%-toolbox$"      } , geometry = {0,15,175,800},    slave = true, border_width = 0  } ,
+  { match = { "^gimp%-dock$"         } , geometry = {930,15,1280,800}, slave = true, border_width = 0  } ,
+  --video
+  { match = { "MPlayer", "Vlc"       } , tag = "7-Video", geometry = {15,30,nil,nil}, float = true     } ,
+  -- music
+  { match = { "ncmpcpp"              } , tag = "8-Music",                                              } ,
+  -- miscellaneous
+  { match = { "rtorrent"             } , tag = "torrent",                                              } ,
+  { match = { "sxiv"                 } , tag = "picture",                                              } ,
+  { match = { "wicd%-curses"         } , tag = "dial",                                                 } ,
+  { match = { "Convertall", "Kcalc"  } , float = true                                                  } ,
 }
 
 -- SHIFTY: default tag creation rules
@@ -201,6 +145,9 @@ shifty.config.apps = {
 --  * all other parameters (e.g. layout, mwfact) follow awesome's tag API
 shifty.config.defaults = {
     layout = awful.layout.suit.tile.bottom,
+    kill = true,
+    leave_kills = false,
+    presist = false,
     ncol = 1,
     mwfact = 0.60,
     floatBars = true,
