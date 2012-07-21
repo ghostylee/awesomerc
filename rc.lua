@@ -307,7 +307,7 @@ batwidget = widget({ type = "textbox" })
     else
       return "" .. colcya .. "bat " .. coldef .. colbwhi .. args[1] .. " " .. args[2] .. "% " .. coldef .. ""
     end
-  end, 236, "BAT0" )
+  end, 236, "BAT1" )
 ---- }}}
 ---- {{{ widgets Filesystem
 ---- {{{ root
