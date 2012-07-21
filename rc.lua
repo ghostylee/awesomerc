@@ -90,18 +90,18 @@ colbwhi = "<span color='" .. brwhi .. "'>"
 -- }}}
 -- {{{ Shifty configured tags.
 shifty.config.tags = {
-  ["1-Term"]   = { position = 1, layout = awful.layout.suit.max, init= true , spawn = terminal           } ,
-  ["2-File"]   = { position = 2, layout = awful.layout.suit.tile.top , spawn = terminal .. " -e ranger"  } ,
-  ["3-Vim"]    = { position = 3, layout = awful.layout.suit.max, spawn = terminal .. " -e vim"           } ,
-  ["4-Web"]    = { position = 4, layout = awful.layout.suit.max, spawn = browser                         } ,
-  ["5-Office"] = { position = 5, layout = awful.layout.suit.tile.bottom                                  } ,
-  ["6-Gimp"]   = { position = 6, layout = awful.layout.suit.floating, spawn = "gimp"                     } ,
-  ["7-Video"]  = { position = 7, layout = awful.layout.suit.floating                                     } ,
-  ["8-Music"]  = { position = 8, layout = awful.layout.suit.tile.bottom                                  } ,
-  ["9-Minicom"]= { position = 9, layout = awful.layout.suit.max , spawn = terminal .. " -e minicom"      } ,
-  ["torrent"]  = { layout = awful.layout.suit.max                                                        } ,
-  ["picture"]  = { layout = awful.layout.suit.max                                                        } ,
-  ["dial"]     = { layout = awful.layout.suit.max                                                        } ,
+  ["1-Term"]   = { position = 1, layout = awful.layout.suit.max, init= true , spawn = terminal              } ,
+  ["2-File"]   = { position = 2, layout = awful.layout.suit.tile.top , spawn = terminal .. " -e ranger"     } ,
+  ["3-Vim"]    = { position = 3, layout = awful.layout.suit.max, spawn = terminal .. " -e vim"              } ,
+  ["4-Web"]    = { position = 4, layout = awful.layout.suit.max, spawn = browser                            } ,
+  ["5-Office"] = { position = 5, layout = awful.layout.suit.tile.bottom                                     } ,
+  ["6-Gimp"]   = { position = 6, layout = awful.layout.suit.floating, spawn = "gimp"                        } ,
+  ["7-Video"]  = { position = 7, layout = awful.layout.suit.floating                                        } ,
+  ["8-Music"]  = { position = 8, layout = awful.layout.suit.tile.bottom                                     } ,
+  ["9-Minicom"]= { position = 9, layout = awful.layout.suit.max , spawn = terminal .. " -e minicom -c on "  } ,
+  ["torrent"]  = { layout = awful.layout.suit.max                                                           } ,
+  ["picture"]  = { layout = awful.layout.suit.max                                                           } ,
+  ["dial"]     = { layout = awful.layout.suit.max                                                           } ,
 }
 
 -- SHIFTY: application matching rules
