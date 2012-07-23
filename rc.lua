@@ -108,7 +108,7 @@ shifty.config.tags = {
 -- order here matters, early rules will be applied first
 shifty.config.apps = {
   -- term
-  { match = { "urxvt", "xterm"       } , tag = "1-Term",                                               } ,
+  { match = { "urxvt", "xterm"       } , tag = "1-Term",  honorsizehints = false,                      } ,
   -- file
   { match = { "ranger",              } , tag = "2-File",                                               } ,
   -- vim
@@ -133,44 +133,6 @@ shifty.config.apps = {
   { match = { "sxiv"                 } , tag = "picture",                                              } ,
   { match = { "wicd%-curses"         } , tag = "dial",                                                 } ,
   { match = { "Convertall", "Kcalc"  } , float = true                                                  } ,
-}
-
--- SHIFTY: default tag creation rules
--- parameter description
---  * floatBars : if floating clients should always have a titlebar
---  * guess_name : should shifty try and guess tag names when creating
---                 new (unconfigured) tags?
---  * guess_position: as above, but for position parameter
---  * run : function to exec when shifty creates a new tag
---  * all other parameters (e.g. layout, mwfact) follow awesome's tag API
-shifty.config.defaults = {
-    layout = awful.layout.suit.tile.bottom,
-    kill = true,
-    leave_kills = false,
-    presist = false,
-    ncol = 1,
-    mwfact = 0.60,
-    floatBars = true,
-    guess_name = true,
-    guess_position = true,
-}
--- }}}
--- {{{ Wibox
--- {{{ widgets
--- {{{ widget separator
-separator = widget({ type = "textbox", name = "separator"})
-separator.text = " "
--- }}}
--- {{{ widget clock
-mytextclock = awful.widget.textclock({align = "right"})
--- }}}
--- {{{ widget laucher
-myawesomemenu = {
-    {"manual", terminal .. " -e man awesome"},
-    {"edit config",
-     editor_cmd .. " " .. awful.util.getdir("config") .. "/rc.lua"},
-    {"restart", awesome.restart},
-    {"quit", awesome.quit}
 }
 
 -- SHIFTY: default tag creation rules
