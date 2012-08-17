@@ -254,7 +254,7 @@ batwidget = widget({ type = "textbox" })
     else
       return "" .. colcya .. "bat " .. coldef .. colbwhi .. args[1] .. " " .. args[2] .. "% " .. coldef .. ""
     end
-  end, 236, "BAT1" )
+  end, 236, "BAT0" )
 ---- }}}
 ---- {{{ widgets Filesystem
 ---- {{{ root
@@ -579,10 +579,7 @@ function() awful.layout.inc(layouts, -1) end),
 
 -- Prompt
 awful.key({modkey}, "r", function()
-  awful.prompt.run({prompt = "Run: "},
-  mypromptbox[mouse.screen].widget,
-  awful.util.spawn, awful.completion.shell,
-  awful.util.getdir("cache") .. "/history")
+  awful.util.spawn("dmenu_run -i -p 'Run:'")
 end),
 
 awful.key({modkey}, "F4", function()
