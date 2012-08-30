@@ -20,7 +20,7 @@ print("Entered rc.lua: " .. os.time())
 beautiful.init(awful.util.getdir("config") .. "/themes/ghosty/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-browser = "chromium"
+browser = "google-chrome"
 terminal = "urxvt"
 editor = "vim"
 editor_cmd = terminal .. " -e " .. editor
@@ -92,12 +92,11 @@ colbwhi = "<span color='" .. brwhi .. "'>"
 shifty.config.tags = {
   ["1-Term"]   = { position = 1, layout = awful.layout.suit.tile.right, init= true , spawn = terminal       } ,
   ["2-File"]   = { position = 2, layout = awful.layout.suit.tile.top , spawn = " nautilus"                  } ,
-  ["3-Vim"]    = { position = 3, layout = awful.layout.suit.max, spawn = terminal .. " -e vim"              } ,
-  ["4-Web"]    = { position = 4, layout = awful.layout.suit.max, spawn = browser                            } ,
-  ["5-Office"] = { position = 5, layout = awful.layout.suit.tile.bottom                                     } ,
-  ["6-Gimp"]   = { position = 6, layout = awful.layout.suit.floating, spawn = "gimp"                        } ,
-  ["7-Video"]  = { position = 7, layout = awful.layout.suit.floating                                        } ,
-  ["8-Music"]  = { position = 8, layout = awful.layout.suit.tile.bottom                                     } ,
+  ["3-Web"]    = { position = 3, layout = awful.layout.suit.tile.right, spawn = browser                     } ,
+  ["4-Office"] = { position = 4, layout = awful.layout.suit.tile.bottom                                     } ,
+  ["5-Gimp"]   = { position = 5, layout = awful.layout.suit.floating,                                       } ,
+  ["6-Video"]  = { position = 6, layout = awful.layout.suit.floating                                        } ,
+  ["7-Music"]  = { position = 7, layout = awful.layout.suit.tile.bottom                                     } ,
   ["9-Minicom"]= { position = 9, layout = awful.layout.suit.max , spawn = terminal .. " -e minicom -c on "  } ,
   ["torrent"]  = { layout = awful.layout.suit.max                                                           } ,
   ["picture"]  = { layout = awful.layout.suit.max                                                           } ,
@@ -108,31 +107,31 @@ shifty.config.tags = {
 -- order here matters, early rules will be applied first
 shifty.config.apps = {
   -- term
-  { match = { "urxvt", "xterm"          } , tag = "1-Term",  honorsizehints = false,                      } ,
+  --{ match = { "urxvt", "xterm"          } , tag = "1-Term",  honorsizehints = false,                      } ,
   -- file
-  { match = { "nautilus"                } , tag = "2-File",                                               } ,
+  { match = { "nautilus"                                      } , tag = "2-File",                                               } ,
   -- vim
-  { match = { "vim", "gvim"             } , tag = "3-Vim",                                                } ,
+  --{ match = { "vim", "gvim"                                 } , tag = "3-Vim",                                                } ,
   -- minicom
-  { match = { "minicom",                } , tag = "9-Minicom",                                            } ,
+  { match = { "minicom",                                      } , tag = "9-Minicom",                                            } ,
   -- web
-  { match = { "chromium", "Firefox"     } , tag = "4-Web",                                                } ,
+  { match = { "chromium", "Firefox","google-chrome","luakit"  } , tag = "3-Web",                                                } ,
   --office
-  { match = { "Zathura", "libreoffice"  } , tag = "5-Office",                                             } ,
+  { match = { "Zathura", "libreoffice"                        } , tag = "4-Office",                                             } ,
   -- gimp
-  { match = { "Gimp"                    } , tag = "6-Gimp",                                               } ,
-  { match = { "gimp%-image%-window"     } , geometry = {176,15,929,800},                border_width = 0  } ,
-  { match = { "^gimp%-toolbox$"         } , geometry = {0,15,175,800},    slave = true, border_width = 0  } ,
-  { match = { "^gimp%-dock$"            } , geometry = {930,15,1280,800}, slave = true, border_width = 0  } ,
+  { match = { "Gimp"                                          } , tag = "5-Gimp",                                               } ,
+  { match = { "gimp%-image%-window"                           } , geometry = {176,15,929,800},                border_width = 0  } ,
+  { match = { "^gimp%-toolbox$"                               } , geometry = {0,15,175,800},    slave = true, border_width = 0  } ,
+  { match = { "^gimp%-dock$"                                  } , geometry = {930,15,1280,800}, slave = true, border_width = 0  } ,
   --video
-  { match = { "MPlayer", "Vlc"          } , tag = "7-Video", geometry = {15,30,nil,nil}, float = true     } ,
+  { match = { "MPlayer", "Vlc"                                } , tag = "6-Video", geometry = {15,30,nil,nil}, float = true     } ,
   -- music
-  { match = { "ncmpcpp"                 } , tag = "8-Music",                                              } ,
+  { match = { "ncmpcpp"                                       } , tag = "7-Music",                                              } ,
   -- miscellaneous
-  { match = { "rtorrent"                } , tag = "torrent",                                              } ,
-  { match = { "sxiv"                    } , tag = "picture",                                              } ,
-  { match = { "wicd%-curses"            } , tag = "dial",                                                 } ,
-  { match = { "Convertall", "Kcalc"     } , float = true                                                  } ,
+  { match = { "rtorrent"                                      } , tag = "torrent",                                              } ,
+  { match = { "sxiv"                                          } , tag = "picture",                                              } ,
+  { match = { "wicd%-curses"                                  } , tag = "dial",                                                 } ,
+  { match = { "Convertall", "Kcalc"                           } , float = true                                                  } ,
 }
 
 -- SHIFTY: default tag creation rules
