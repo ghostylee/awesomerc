@@ -91,12 +91,12 @@ colbwhi = "<span color='" .. brwhi .. "'>"
 -- {{{ Shifty configured tags.
 shifty.config.tags = {
   ["1-Term"]   = { position = 1, layout = awful.layout.suit.tile.right, init= true , spawn = terminal       } ,
-  ["2-File"]   = { position = 2, layout = awful.layout.suit.tile.top , spawn = " nautilus"                  } ,
+  ["2-File"]   = { position = 2, layout = awful.layout.suit.tile.right, spawn = " nautilus"                 } ,
   ["3-Web"]    = { position = 3, layout = awful.layout.suit.tile.right, spawn = browser                     } ,
-  ["4-Office"] = { position = 4, layout = awful.layout.suit.tile.bottom                                     } ,
-  ["5-Gimp"]   = { position = 5, layout = awful.layout.suit.floating,                                       } ,
-  ["6-Video"]  = { position = 6, layout = awful.layout.suit.floating                                        } ,
-  ["7-Music"]  = { position = 7, layout = awful.layout.suit.tile.bottom                                     } ,
+  ["4-Office"] = { position = 4, layout = awful.layout.suit.tile.right,                                     } ,
+  ["5-Gimp"]   = { position = 5, layout = awful.layout.suit.tile.right,                                     } ,
+  ["6-Video"]  = { position = 6, layout = awful.layout.suit.tile.right,                                        } ,
+  ["7-Music"]  = { position = 7, layout = awful.layout.suit.tile.right,                                     } ,
   ["9-Minicom"]= { position = 9, layout = awful.layout.suit.max , spawn = terminal .. " -e minicom -c on "  } ,
   ["torrent"]  = { layout = awful.layout.suit.max                                                           } ,
   ["picture"]  = { layout = awful.layout.suit.max                                                           } ,
