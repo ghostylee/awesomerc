@@ -107,7 +107,7 @@ shifty.config.tags = {
 -- order here matters, early rules will be applied first
 shifty.config.apps = {
   -- term
-  --{ match = { "urxvt", "xterm"          } , tag = "1-Term",  honorsizehints = false,                      } ,
+  { match = { "urxvt", "xterm"          } ,  honorsizehints = false,                                                            } ,
   -- file
   { match = { "nautilus"                                      } , tag = "2-File",                                               } ,
   -- vim
