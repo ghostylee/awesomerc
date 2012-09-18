@@ -91,7 +91,7 @@ colbwhi = "<span color='" .. brwhi .. "'>"
 -- {{{ Shifty configured tags.
 shifty.config.tags = {
   ["1-Term"]   = { position = 1, layout = awful.layout.suit.tile.right, init= true , spawn = terminal       } ,
-  ["2-File"]   = { position = 2, layout = awful.layout.suit.tile.right, spawn = " nautilus"                 } ,
+  ["2-File"]   = { position = 2, layout = awful.layout.suit.tile.right, spawn = " nautilus -no-desktop"     } ,
   ["3-Web"]    = { position = 3, layout = awful.layout.suit.tile.right, spawn = browser                     } ,
   ["4-Office"] = { position = 4, layout = awful.layout.suit.tile.right,                                     } ,
   ["5-Gimp"]   = { position = 5, layout = awful.layout.suit.tile.right,                                     } ,
