@@ -38,7 +38,7 @@ theme.border_marked = red
 -- Example:
 
 theme.tasklist_bg_focus = black
-theme.tasklist_fg_focus = lgrey
+theme.tasklist_fg_focus = green
 
 --font color fort textbox widget used as label in my wibox
 theme.textbox_widget_as_label_font_color = white
