@@ -23,7 +23,7 @@ theme.fg_focus      = lblue
 theme.fg_urgent     = white
 theme.fg_minimize   = white
 
-theme.border_width  = "1"
+theme.border_width  = "0"
 theme.border_normal = black
 theme.border_focus  = lblue
 theme.border_marked = red
@@ -37,8 +37,8 @@ theme.border_marked = red
 -- mouse_finder_[color|timeout|animate_timeout|radius|factor]
 -- Example:
 
-theme.tasklist_bg_focus = lblue
-theme.tasklist_fg_focus = black
+theme.tasklist_bg_focus = black
+theme.tasklist_fg_focus = lgrey
 
 --font color fort textbox widget used as label in my wibox
 theme.textbox_widget_as_label_font_color = white
