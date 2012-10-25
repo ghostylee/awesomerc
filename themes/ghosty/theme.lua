@@ -23,9 +23,9 @@ theme.fg_focus      = lblue
 theme.fg_urgent     = white
 theme.fg_minimize   = white
 
-theme.border_width  = "0"
+theme.border_width  = "1"
 theme.border_normal = black
-theme.border_focus  = lblue
+theme.border_focus  = white
 theme.border_marked = red
 
 -- There are other variable sets
