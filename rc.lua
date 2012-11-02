@@ -91,17 +91,18 @@ colbwhi = "<span color='" .. brwhi .. "'>"
 -- }}}
 -- {{{ Shifty configured tags.
 shifty.config.tags = {
-    ["1-Term"]   = { position = 1, layout = awful.layout.suit.tile.right, init= true , spawn = terminal       } ,
-    ["2-File"]   = { position = 2, layout = awful.layout.suit.tile.right, spawn = " nautilus --no-desktop"    } ,
-    ["3-Web"]    = { position = 3, layout = awful.layout.suit.tile.right, spawn = browser                     } ,
-    ["4-Office"] = { position = 4, layout = awful.layout.suit.tile.right,                                     } ,
-    ["5-Gimp"]   = { position = 5, layout = awful.layout.suit.tile.right,                                     } ,
-    ["6-Video"]  = { position = 6, layout = awful.layout.suit.tile.right,                                        } ,
-    ["7-Music"]  = { position = 7, layout = awful.layout.suit.tile.right,                                     } ,
-    ["9-Minicom"]= { position = 9, layout = awful.layout.suit.max , spawn = terminal .. " -e minicom -c on "  } ,
-    ["torrent"]  = { layout = awful.layout.suit.max                                                           } ,
-    ["picture"]  = { layout = awful.layout.suit.max                                                           } ,
-    ["dial"]     = { layout = awful.layout.suit.max                                                           } ,
+    ["1-Term"]    = { position = 1, layout = awful.layout.suit.tile.right, init= true , spawn = terminal       } ,
+    ["2-File"]    = { position = 2, layout = awful.layout.suit.tile.right, spawn = " nautilus --no-desktop"    } ,
+    ["3-Web"]     = { position = 3, layout = awful.layout.suit.tile.right, spawn = browser                     } ,
+    ["4-Office"]  = { position = 4, layout = awful.layout.suit.tile.right,                                     } ,
+    ["5-Gimp"]    = { position = 5, layout = awful.layout.suit.tile.right,                                     } ,
+    ["6-Video"]   = { position = 6, layout = awful.layout.suit.tile.right,                                     } ,
+    ["7-Music"]   = { position = 7, layout = awful.layout.suit.tile.right,                                     } ,
+    ["8-Eclipse"] = { position = 8, layout = awful.layout.suit.tile.right, spawn = "eclipse-bin-4.2"           } ,
+    ["9-Minicom"] = { position = 9, layout = awful.layout.suit.max , spawn = terminal .. " -e minicom -c on "  } ,
+    ["torrent"]   = { layout = awful.layout.suit.max                                                           } ,
+    ["picture"]   = { layout = awful.layout.suit.max                                                           } ,
+    ["dial"]      = { layout = awful.layout.suit.max                                                           } ,
 }
 
 -- SHIFTY: application matching rules
@@ -115,8 +116,10 @@ shifty.config.apps = {
     --{ match = { "vim", "gvim"                                 } , tag = "3-Vim",                                                } ,
     -- minicom
     { match = { "minicom",                                      } , tag = "9-Minicom",                                            } ,
+    -- eclipse
+    { match = { "Eclipse",                                      } , tag = "8-Eclipse",                                            } ,
     -- web
-    { match = { "chromium", "Firefox","google-chrome","luakit"  } , tag = "3-Web",                                                } ,
+    { match = { "chromium", "Firefox","Google Chrome","luakit"  } , tag = "3-Web",                                                } ,
     --office
     { match = { "Zathura", "libreoffice"                        } , tag = "4-Office",                                             } ,
     -- gimp
@@ -125,7 +128,7 @@ shifty.config.apps = {
     { match = { "^gimp%-toolbox$"                               } , geometry = {0,15,175,800},    slave = true, border_width = 0  } ,
     { match = { "^gimp%-dock$"                                  } , geometry = {930,15,1280,800}, slave = true, border_width = 0  } ,
     --video
-    { match = { "MPlayer", "Vlc"                                } , tag = "6-Video", geometry = {15,30,nil,nil}, float = true     } ,
+    { match = { "MPlayer", "Vlc","gnome-mplayer"                } , tag = "6-Video", geometry = {15,30,nil,nil}, float = true     } ,
     -- music
     { match = { "ncmpcpp"                                       } , tag = "7-Music",                                              } ,
     -- miscellaneous
