@@ -98,7 +98,7 @@ shifty.config.tags = {
     ["5-Gimp"]    = { position = 5, layout = awful.layout.suit.tile.right,                                     } ,
     ["6-Video"]   = { position = 6, layout = awful.layout.suit.tile.right,                                     } ,
     ["7-Music"]   = { position = 7, layout = awful.layout.suit.tile.right,                                     } ,
-    ["8-Eclipse"] = { position = 8, layout = awful.layout.suit.tile.right, spawn = "eclipse-bin-4.2"           } ,
+    ["8-Eclipse"] = { position = 8, layout = awful.layout.suit.tile.bottom, spawn = "eclipse-bin-4.2"          } ,
     ["9-Minicom"] = { position = 9, layout = awful.layout.suit.max , spawn = terminal .. " -e minicom -c on "  } ,
     ["torrent"]   = { layout = awful.layout.suit.max                                                           } ,
     ["picture"]   = { layout = awful.layout.suit.max                                                           } ,
