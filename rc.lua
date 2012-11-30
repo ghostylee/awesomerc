@@ -92,12 +92,12 @@ colbwhi = "<span color='" .. brwhi .. "'>"
 -- {{{ Shifty configured tags.
 shifty.config.tags = {
     ["1-Term"]    = { position = 1, layout = awful.layout.suit.tile.right, init= true , spawn = terminal       } ,
-    ["2-File"]    = { position = 2, layout = awful.layout.suit.tile.right, spawn = " nautilus --no-desktop"    } ,
+    ["2-File"]    = { position = 2, layout = awful.layout.suit.tile.right, spawn = "nautilus --no-desktop"     } ,
     ["3-Web"]     = { position = 3, layout = awful.layout.suit.tile.right, spawn = browser                     } ,
-    ["4-Office"]  = { position = 4, layout = awful.layout.suit.tile.right,                                     } ,
+    ["4-Office"]  = { position = 4, layout = awful.layout.suit.tile.right, spawn = "libreoffice"               } ,
     ["5-Gimp"]    = { position = 5, layout = awful.layout.suit.tile.right,                                     } ,
     ["6-Video"]   = { position = 6, layout = awful.layout.suit.tile.right,                                     } ,
-    ["7-Music"]   = { position = 7, layout = awful.layout.suit.tile.right,                                     } ,
+    ["7-Winxp"]   = { position = 7, layout = awful.layout.suit.tile.right,  spawn = "VBoxManage startvm winxp" } ,
     ["8-Eclipse"] = { position = 8, layout = awful.layout.suit.tile.bottom, spawn = "eclipse-bin-4.2"          } ,
     ["9-Minicom"] = { position = 9, layout = awful.layout.suit.max , spawn = terminal .. " -e minicom -c on "  } ,
     ["torrent"]   = { layout = awful.layout.suit.max                                                           } ,
@@ -118,6 +118,8 @@ shifty.config.apps = {
     { match = { "minicom",                                      } , tag = "9-Minicom",                                            } ,
     -- eclipse
     { match = { "Eclipse",                                      } , tag = "8-Eclipse",                                            } ,
+    -- virtualbox winxp
+    { match = { "winxp",                                        } , tag = "7-Winxp",                                            } ,
     -- web
     { match = { "chromium", "Firefox","Google Chrome","luakit"  } , tag = "3-Web",                                                } ,
     --office
