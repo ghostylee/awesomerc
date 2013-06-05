@@ -34,17 +34,9 @@ modkey = "Mod4"
 -- Table of layouts to cover with awful.layout.inc, order matters.
 layouts =
 {
-    awful.layout.suit.tile,
-    awful.layout.suit.tile.left,
-    awful.layout.suit.tile.right,
-    awful.layout.suit.tile.bottom,
-    awful.layout.suit.tile.top,
     awful.layout.suit.fair,
     awful.layout.suit.fair.horizontal,
     awful.layout.suit.max,
-    awful.layout.suit.max.fullscreen,
-    awful.layout.suit.magnifier,
-    awful.layout.suit.floating
 }
 
 -- Define if we want to use titlebar on all applications.
@@ -91,14 +83,14 @@ colbwhi = "<span color='" .. brwhi .. "'>"
 -- }}}
 -- {{{ Shifty configured tags.
 shifty.config.tags = {
-    ["1-Term"]    = { position = 1, layout = awful.layout.suit.tile.right, init= true , spawn = terminal       } ,
-    ["2-File"]    = { position = 2, layout = awful.layout.suit.tile.right, spawn = "nautilus --no-desktop"     } ,
-    ["3-Web"]     = { position = 3, layout = awful.layout.suit.tile.right, spawn = browser                     } ,
-    ["4-Office"]  = { position = 4, layout = awful.layout.suit.tile.right, spawn = "libreoffice"               } ,
-    ["5-Gimp"]    = { position = 5, layout = awful.layout.suit.tile.right,                                     } ,
-    ["6-Video"]   = { position = 6, layout = awful.layout.suit.tile.right,                                     } ,
-    ["7-Winxp"]   = { position = 7, layout = awful.layout.suit.tile.right,  spawn = "VBoxManage startvm winxp" } ,
-    ["8-Eclipse"] = { position = 8, layout = awful.layout.suit.tile.bottom, spawn = "eclipse-bin-4.2"          } ,
+    ["1-Term"]    = { position = 1, layout = awful.layout.suit.fair, init= true , spawn = terminal       } ,
+    ["2-File"]    = { position = 2, layout = awful.layout.suit.fair, spawn = "nautilus --no-desktop"     } ,
+    ["3-Web"]     = { position = 3, layout = awful.layout.suit.max, spawn = browser                     } ,
+    ["4-Office"]  = { position = 4, layout = awful.layout.suit.fair, spawn = "libreoffice"               } ,
+    ["5-Gimp"]    = { position = 5, layout = awful.layout.suit.fair,                                     } ,
+    ["6-Video"]   = { position = 6, layout = awful.layout.suit.fair,                                     } ,
+    ["7-Winxp"]   = { position = 7, layout = awful.layout.suit.fair,  spawn = "VBoxManage startvm winxp" } ,
+    ["8-Eclipse"] = { position = 8, layout = awful.layout.suit.fair, spawn = "eclipse-bin-4.2"          } ,
     ["9-Minicom"] = { position = 9, layout = awful.layout.suit.max , spawn = terminal .. " -e minicom -c on "  } ,
     ["torrent"]   = { layout = awful.layout.suit.max                                                           } ,
     ["picture"]   = { layout = awful.layout.suit.max                                                           } ,
@@ -282,22 +274,22 @@ mymainmenu = awful.menu(
         end
     end, 621)
     ---- }}}
-    ---- {{{ /home
-    fshwidget = widget({ type = "textbox" })
-    vicious.register(fshwidget, vicious.widgets.fs,
-    function (widget, args)
-        if  args["{/home used_p}"] >= 97 and args["{/home used_p}"] < 98 then
-            return "" .. colyel .. "/home " .. coldef .. colbyel .. args["{/home used_p}"] .. "% (" .. args["{/home avail_gb}"] .. " GiB free) " .. coldef .. ""
-        elseif args["{/home used_p}"] >= 98 and args["{/home used_p}"] < 99 then
-            return "" .. colred .. "/home " .. coldef .. colbred .. args["{/home used_p}"] .. "% (" .. args["{/home avail_gb}"] .. " GiB free) " .. coldef .. ""
-        elseif args["{/home used_p}"] >= 99 and args["{/home used_p}"] <= 100 then
-            naughty.notify({ title = "Hard drive Warning", text = "No space left on /home!\nMake some room.", timeout = 10, position = "top_right", fg = beautiful.fg_urgent, bg = beautiful.bg_urgent })
-            return "" .. colred .. "/home " .. coldef .. colbred .. args["{/home used_p}"] .. "% (" .. args["{/home avail_gb}"] .. " GiB free) " .. coldef .. "" 
-        else
-            return "" .. colcya .. "/home " .. coldef .. colbwhi .. args["{/home used_p}"] .. "% (" .. args["{/home avail_gb}"] .. " GiB free) " .. coldef .. ""
-        end
-    end, 622)
-    ---- }}}
+    ------ {{{ /home
+    --fshwidget = widget({ type = "textbox" })
+    --vicious.register(fshwidget, vicious.widgets.fs,
+    --function (widget, args)
+        --if  args["{/home used_p}"] >= 97 and args["{/home used_p}"] < 98 then
+            --return "" .. colyel .. "/home " .. coldef .. colbyel .. args["{/home used_p}"] .. "% (" .. args["{/home avail_gb}"] .. " GiB free) " .. coldef .. ""
+        --elseif args["{/home used_p}"] >= 98 and args["{/home used_p}"] < 99 then
+            --return "" .. colred .. "/home " .. coldef .. colbred .. args["{/home used_p}"] .. "% (" .. args["{/home avail_gb}"] .. " GiB free) " .. coldef .. ""
+        --elseif args["{/home used_p}"] >= 99 and args["{/home used_p}"] <= 100 then
+            --naughty.notify({ title = "Hard drive Warning", text = "No space left on /home!\nMake some room.", timeout = 10, position = "top_right", fg = beautiful.fg_urgent, bg = beautiful.bg_urgent })
+            --return "" .. colred .. "/home " .. coldef .. colbred .. args["{/home used_p}"] .. "% (" .. args["{/home avail_gb}"] .. " GiB free) " .. coldef .. "" 
+        --else
+            --return "" .. colcya .. "/home " .. coldef .. colbwhi .. args["{/home used_p}"] .. "% (" .. args["{/home avail_gb}"] .. " GiB free) " .. coldef .. ""
+        --end
+    --end, 622)
+    ------ }}}
     ---- }}}
     -- {{{ widgets Net
     -- {{{ eth
@@ -486,7 +478,7 @@ mymainmenu = awful.menu(
             wifidownwidget,
             wifiwidget,
             --fshwidget,
-            fsrwidget,
+            --fsrwidget,
             layout = awful.widget.layout.horizontal.rightleft
         }
         my_bottom_wibox[s].screen = s
